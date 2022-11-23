@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "./Heading/Button";
+import Card from "./Heading/Form/Card";
 import Input from "./Heading/Form/Input";
 import H1 from "./Heading/H1";
 import H3 from "./Heading/H3";
@@ -13,8 +14,8 @@ export default class TodoPage extends Component {
         <div className="px-32">
           <H1>Things to get done</H1>
           <H3>Things to do</H3>
-          <Button>Save</Button>
-          <Input />
+          <Button them="highlight">+ Add Todo</Button>
+          <Card></Card>
         </div>
       </div>
     );
