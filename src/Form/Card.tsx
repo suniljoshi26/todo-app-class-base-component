@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Button from "../Button";
-import H3 from "../H3";
+import Button from "../Heading/Button";
+import H3 from "../Heading/H3";
 import Input from "./Input";
 
 export default class Card extends Component {
