@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "../Heading/Button";
+import Button from "../Button";
 import H3 from "../Heading/H3";
 import Input from "./Input";
 
