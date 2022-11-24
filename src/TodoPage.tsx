@@ -5,7 +5,7 @@ import H1 from "./Heading/H1";
 import H3 from "./Heading/H3";
 import NavBar from "./NavBar";
 type todoprops = {
-  n: string;
+  n?: string;
 };
 type state = {
   formShow: boolean;
