@@ -17,15 +17,25 @@ export default class TodoPage extends Component<todoprops, state> {
       formShow: false,
     };
   }
-  showForm() {}
+
+  showForm() {
+    this.setState({ formShow: true });
+    console.log("form");
+  }
+
   render(): React.ReactNode {
+    this.showForm = this.showForm.bind(this);
     return (
       <div>
         <NavBar />
         <div className="px-32">
           <H1>Things to get done</H1>
           <H3>Things to do</H3>
-          {!this.state.formShow && <Button them="highlight">+ Add Todo</Button>}
+          {!this.state.formShow && (
+            <Button them="highlight" onClick={this.showForm}>
+              + Add Todo
+            </Button>
+          )}
           {this.state.formShow && <Card></Card>}
         </div>
       </div>

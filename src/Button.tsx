@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes, Component } from "react";
 type buttonProps = {
   children: string;
+
   them?: "highlight" | "secondary" | "primary";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -25,6 +26,7 @@ export default class Button extends Component<buttonProps> {
           " " +
           radiusClass
         }
+        onClick={this.props.onClick}
       >
         {this.props.children}
       </button>
