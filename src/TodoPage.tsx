@@ -34,16 +34,22 @@ export default class TodoPage extends Component<todoprops, state> {
   }
   markAsNotDone(todo: String) {
     const t = this.state.doneList.filter((t) => t !== todo);
-    this.setState({ doneList: [...t] });
+    this.setState({ doneList: t });
     this.setState({ todoList: [...this.state.todoList, todo] });
-    console.log("mark as done");
+    console.log("mark  not as done");
   }
-  markAsDone() {}
+  markAsDone(todo: String) {
+    const t = this.state.todoList.filter((t) => t !== todo);
+    this.setState({ todoList: t });
+    this.setState({ doneList: [...this.state.doneList, todo] });
+    console.log("mark  not as done");
+  }
 
   render(): React.ReactNode {
     this.showForm = this.showForm.bind(this);
     this.addTodo = this.addTodo.bind(this);
     this.markAsNotDone = this.markAsNotDone.bind(this);
+    this.markAsDone = this.markAsDone.bind(this);
     return (
       <div>
         <NavBar />
