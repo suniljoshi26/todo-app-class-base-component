@@ -17,7 +17,7 @@ export default class TodoPage extends Component<todoprops, state> {
     super(props);
     this.state = {
       formShow: false,
-      todoList: [],
+      todoList: ["done", "not done"],
     };
   }
   addTodo(todo: string) {
@@ -41,7 +41,7 @@ export default class TodoPage extends Component<todoprops, state> {
           <H1>Things to get done</H1>
           <H3>Things to do</H3>
           {this.state.todoList.map((todo, index) => (
-            <TodoRow todo={todo} key={index} />
+            <TodoRow todo={todo} key={index} done={true} />
           ))}
           {!this.state.formShow && (
             <Button them="highlight" onClick={this.showForm}>
