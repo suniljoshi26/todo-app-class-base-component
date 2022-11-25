@@ -32,10 +32,18 @@ export default class TodoPage extends Component<todoprops, state> {
     this.setState({ formShow: true });
     console.log("form");
   }
+  markAsNotDone(todo: String) {
+    const t = this.state.doneList.filter((t) => t !== todo);
+    this.setState({ doneList: [...t] });
+    this.setState({ todoList: [...this.state.todoList, todo] });
+    console.log("mark as done");
+  }
+  markAsDone() {}
 
   render(): React.ReactNode {
     this.showForm = this.showForm.bind(this);
     this.addTodo = this.addTodo.bind(this);
+    this.markAsNotDone = this.markAsNotDone.bind(this);
     return (
       <div>
         <NavBar />
@@ -43,7 +51,12 @@ export default class TodoPage extends Component<todoprops, state> {
           <H1>Things to get done</H1>
           <H3>Things to do</H3>
           {this.state.todoList.map((todo, index) => (
-            <TodoRow todo={todo} key={index} done={true} />
+            <TodoRow
+              todo={todo}
+              key={index}
+              done={false}
+              onStatusChange={this.markAsDone}
+            />
           ))}
           {!this.state.formShow && (
             <Button them="highlight" onClick={this.showForm}>
@@ -53,7 +66,12 @@ export default class TodoPage extends Component<todoprops, state> {
           {this.state.formShow && <Card onSave={this.addTodo}></Card>}
           <H3>Things to done</H3>
           {this.state.doneList.map((todo, index) => (
-            <TodoRow todo={todo} key={index} done={true} />
+            <TodoRow
+              todo={todo}
+              key={index}
+              done={true}
+              onStatusChange={this.markAsNotDone}
+            />
           ))}
         </div>
       </div>
