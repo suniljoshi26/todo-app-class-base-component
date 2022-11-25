@@ -11,6 +11,7 @@ type todoprops = {
 type state = {
   formShow: boolean;
   todoList: String[];
+  doneList: String[];
 };
 export default class TodoPage extends Component<todoprops, state> {
   constructor(props: todoprops) {
@@ -18,6 +19,7 @@ export default class TodoPage extends Component<todoprops, state> {
     this.state = {
       formShow: false,
       todoList: ["done", "not done"],
+      doneList: ["work", "complete"],
     };
   }
   addTodo(todo: string) {
@@ -49,6 +51,10 @@ export default class TodoPage extends Component<todoprops, state> {
             </Button>
           )}
           {this.state.formShow && <Card onSave={this.addTodo}></Card>}
+          <H3>Things to done</H3>
+          {this.state.doneList.map((todo, index) => (
+            <TodoRow todo={todo} key={index} done={true} />
+          ))}
         </div>
       </div>
     );
