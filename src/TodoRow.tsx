@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from "./Checkbox";
 import { AiFillDelete } from "react-icons/ai";
+import Card from "./Form/Card";
 type rowprops = {
   todo: String;
   done: boolean;
@@ -20,10 +21,15 @@ export default class TodoRow extends Component<rowprops> {
     this.handleChange = this.handleChange.bind(this);
     this.onDelete = this.onDelete.bind(this);
     return (
-      <div className="flex space-x-2 items-center">
-        <Checkbox checked={this.props.done} onChange={this.handleChange} />
-        <h3>{this.props.todo}</h3>
-        <AiFillDelete onClick={this.onDelete} />
+      <div className="flex justify-between items-center  p-2 border border-gray-400 shadow-md rounded-md mt-1  w-80">
+        <div className="flex space-x-2 items-center ">
+          {" "}
+          <Checkbox checked={this.props.done} onChange={this.handleChange} />
+          <h3 className="text-lg">{this.props.todo}</h3>
+        </div>
+        <div>
+          <AiFillDelete onClick={this.onDelete} />
+        </div>
       </div>
     );
   }
