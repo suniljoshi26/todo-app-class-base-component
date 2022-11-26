@@ -44,18 +44,14 @@ export default class TodoPage extends Component<todoprops, state> {
     this.setState({ doneList: [...this.state.doneList, todo] });
     console.log("mark  not as done");
   }
-  deleteTodo = (todo: String, done: boolean) => {
+  deleteTodo(todo: String, done: boolean) {
     console.log("delete", todo);
-    if (done) {
-      const newDoneList = this.state.doneList.filter(
-        (t) => t !== this.props.todo
-      );
-      this.setState({ doneList: newDoneList });
-    } else {
-      const newTodoList = this.state.todoList.filter((t) => t !== todo);
-      this.setState({ todoList: newTodoList });
-    }
-  };
+    const newTodoList = this.state.todoList.filter((t) => t !== todo);
+    const newDoneList = this.state.doneList.filter((t) => t !== todo);
+
+    this.setState({ doneList: [...newDoneList] });
+    this.setState({ todoList: [...newTodoList] });
+  }
   render(): React.ReactNode {
     this.showForm = this.showForm.bind(this);
     this.addTodo = this.addTodo.bind(this);
