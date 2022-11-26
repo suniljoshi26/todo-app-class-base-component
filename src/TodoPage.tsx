@@ -3,6 +3,7 @@ import Button from "./Button";
 import Card from "./Form/Card";
 import H1 from "./Heading/H1";
 import H3 from "./Heading/H3";
+import Msg from "./Msg";
 import NavBar from "./NavBar";
 import TodoRow from "./TodoRow";
 type todoprops = {
@@ -64,6 +65,7 @@ export default class TodoPage extends Component<todoprops, state> {
         <div className=" px-12 sm:px-32">
           <H1>Things to get done</H1>
           <H3 className="mt-8">Things to do</H3>
+          {(this, this.state.todoList.length === 0 && <Msg />)}
           {this.state.todoList.map((todo, index) => (
             <TodoRow
               todo={todo}
@@ -80,6 +82,7 @@ export default class TodoPage extends Component<todoprops, state> {
           )}
           {this.state.formShow && <Card onSave={this.addTodo}></Card>}
           <H3>Things to done</H3>
+          {(this, this.state.doneList.length === 0 && <Msg />)}
           {this.state.doneList.map((todo, index) => (
             <TodoRow
               todo={todo}
