@@ -33,7 +33,12 @@ export default class Card extends Component<cardprops, stateprops> {
         />
 
         <div className="flex space-x-6 mt-4">
-          <Button onClick={this.save}>Save</Button>
+          <Button
+            onClick={this.save}
+            disabled={this.state.inputValue.trim().length == 0}
+          >
+            Save
+          </Button>
           <Button them="secondary">Cancel </Button>
         </div>
       </div>
