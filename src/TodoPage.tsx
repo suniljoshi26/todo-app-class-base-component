@@ -61,9 +61,9 @@ export default class TodoPage extends Component<todoprops, state> {
     return (
       <div>
         <NavBar />
-        <div className="px-32">
+        <div className=" px-12 sm:px-32">
           <H1>Things to get done</H1>
-          <H3>Things to do</H3>
+          <H3 className="mt-8">Things to do</H3>
           {this.state.todoList.map((todo, index) => (
             <TodoRow
               todo={todo}
