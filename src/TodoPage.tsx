@@ -33,6 +33,11 @@ export default class TodoPage extends Component<todoprops, state> {
     this.setState({ formShow: true });
     console.log("form");
   }
+  hideForm() {
+    this.setState({
+      formShow: false,
+    });
+  }
   markAsNotDone(todo: String) {
     const t = this.state.doneList.filter((t) => t !== todo);
     this.setState({ doneList: t });
@@ -59,6 +64,7 @@ export default class TodoPage extends Component<todoprops, state> {
     this.markAsNotDone = this.markAsNotDone.bind(this);
     this.markAsDone = this.markAsDone.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.hideForm = this.hideForm.bind(this);
     return (
       <div>
         <NavBar />
@@ -80,7 +86,9 @@ export default class TodoPage extends Component<todoprops, state> {
               + Add Todo
             </Button>
           )}
-          {this.state.formShow && <Card onSave={this.addTodo}></Card>}
+          {this.state.formShow && (
+            <Card onSave={this.addTodo} hideForm={this.hideForm}></Card>
+          )}
           <H3>Things to done</H3>
           {(this, this.state.doneList.length === 0 && <Msg />)}
           {this.state.doneList.map((todo, index) => (

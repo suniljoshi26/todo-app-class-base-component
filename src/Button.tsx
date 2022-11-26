@@ -6,7 +6,7 @@ type buttonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default class Button extends Component<buttonProps> {
-  render() {
+  render(): React.ReactNode {
     let themClass =
       "text-white rounded-md bg-yellow-500 border-transparent  hover:bg-yellow-600 ";
 
@@ -16,7 +16,7 @@ export default class Button extends Component<buttonProps> {
     }
     if (this.props.them === "secondary") {
       themClass =
-        "text-gray-900 bg-white  border-gray-300 hover:bg-gray-600 rounded-md";
+        "text-gray-900 bg-white  border-gray-300 hover:bg-yellow-600 hover:text-white rounded-md";
     }
     return (
       <button

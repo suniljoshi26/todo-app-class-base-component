@@ -2,7 +2,10 @@ import React, { ChangeEvent, Component } from "react";
 import Button from "../Button";
 import H3 from "../Heading/H3";
 import Input from "./Input";
-type cardprops = { onSave: Function };
+type cardprops = {
+  onSave: Function;
+  hideForm: Function;
+};
 type stateprops = {
   inputValue: string;
 };
@@ -19,10 +22,15 @@ export default class Card extends Component<cardprops, stateprops> {
   }
   save() {
     this.props.onSave(this.state.inputValue);
-    console.log("save");
+    // this.props.hideForm();
+    this.setState({ inputValue: "" });
   }
-  render() {
+  hide() {
+    this.props.hideForm();
+  }
+  render(): React.ReactNode {
     this.save = this.save.bind(this);
+    this.hide = this.hide.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     return (
       <div className="p-4 rounded-md border border-gray-300 shadow-md">
@@ -39,7 +47,9 @@ export default class Card extends Component<cardprops, stateprops> {
           >
             Save
           </Button>
-          <Button them="secondary">Cancel </Button>
+          <Button them="secondary" onClick={this.hide}>
+            Cancel
+          </Button>
         </div>
       </div>
     );
